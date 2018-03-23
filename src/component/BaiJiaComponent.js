@@ -40,7 +40,7 @@ export default class BaiJiaComponent extends Component{
 			<TouchableHighlight
 			underlayColor={'#7B68EE'}
 			style={styles.listViewStyle}
-			onPress={()=>{}}>
+			onPress={()=>{this.props.navigation.navigate('baiChild')}}>
 			<View style={{flexDirection:'row', alignItems:'center', justifyContent: 'center' }}>
 			<Text style={styles.textStyle}>{rowData}</Text>
 			<Icon name="chevron-right" size={scaleSize(56)} color='#FFFFFF'/>

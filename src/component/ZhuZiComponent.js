@@ -6,7 +6,10 @@ import {
 	StatusBar,
 	ListView,
 	TouchableHighlight,
-	Dimensions
+	Dimensions,
+	BackHandler,
+	ToastAndroid,
+	Platform
 }from 'react-native';
 import {setSpText,scaleSize} from '../utils/ScreenUtil';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -22,6 +25,32 @@ export default class ZhuZiComponent extends Component{
 			dataSource:component,
 		}
 	}
+	componentWillMount() {
+		if (Platform.OS === 'android') {
+			BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
+		}
+	  }
+	
+	  componentWillUnmount() {
+		if (Platform.OS === 'android') {
+			BackHandler.removeEventListener('hardwareBackPress', this.onBackAndroid);
+		}
+	  }
+	
+	
+	  onBackAndroid = () => {
+			if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+				//最近2秒内按过back键，可以退出应用。
+				BackHandler.exitApp();
+				return false;
+			  }else{
+				this.lastBackPressed = Date.now();
+				ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
+				return true;
+			  }
+	};
+	
+
 	render(){
 		const { navigate } = this.props.navigation;
 		return(

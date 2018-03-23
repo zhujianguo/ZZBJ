@@ -10,6 +10,7 @@ import {
 }from 'react-native';
 import {setSpText,scaleSize} from '../utils/ScreenUtil';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
 const { width, height } = Dimensions.get('window');
 
 export default class HanQiComponent extends Component{
@@ -29,6 +30,8 @@ export default class HanQiComponent extends Component{
 			</View>
 		);
 	}
+
+	
 }
 
 const styles=StyleSheet.create({

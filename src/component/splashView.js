@@ -5,7 +5,7 @@ import GetSetStorge from '../utils/GetSetStorge';
 import { NavigationActions } from 'react-navigation';
 import {setSpText} from '../utils/ScreenUtil';
 
-import SplashScreen from 'react-native-splash-screen'
+import SplashScreen from 'react-native-splash-screen';
 
 const splashImg = require('../image/timg.jpg');//加载图片
 

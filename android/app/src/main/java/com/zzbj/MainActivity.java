@@ -20,4 +20,9 @@ public class MainActivity extends ReactActivity {
         SplashScreen.show(this);
         super.onCreate(savedInstanceState);
     }
+     // https://github.com/react-navigation/react-navigation/issues/1372#issuecomment-299432731
+     @Override
+     public void invokeDefaultOnBackPressed() {
+         moveTaskToBack(true);
+     }
 }

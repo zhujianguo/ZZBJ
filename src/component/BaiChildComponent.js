@@ -4,14 +4,18 @@ import {
 	Text,
 	View,
 	TouchableOpacity,
-	StatusBar
+	StatusBar,
+	Platform,
+	BackHandler,
+	ToastAndroid
 }from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class BaiChildComponent extends Component{
 	static navigationOptions = {
         title: '二级百',
-      };
+	  };
+
 	render(){
 		const { navigate } = this.props.navigation;
 		return(
