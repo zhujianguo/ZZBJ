@@ -22,21 +22,15 @@ import GuidePageComponent from './src/component/GuidePageComponent';
 import BaiChildComponent from './src/component/BaiChildComponent';
 import JiaChildComponent from './src/component/JiaChildComponent';
 import ZiChildComponent from './src/component/ZiChildComponent';
-import splashView from './src/component/splashView';
 import {setSpText,scaleSize} from './src/utils/ScreenUtil';
+import SplashScreen from 'react-native-splash-screen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' +
-    'Cmd+D or shake for dev menu',
-  android: 'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 export default class App extends Component {
 	
 	componentWillMount() {
       //监听状态改变事件
+     
       AppState.addEventListener('change', this.handleAppStateChange);
       //监听内存报警事件
       AppState.addEventListener('change', function(){
@@ -52,6 +46,9 @@ export default class App extends Component {
    handleAppStateChange(appState) {
       //alert('当前状态为:'+appState);
    }
+   componentDidMount(){
+    SplashScreen.hide();
+	}
    
   render() {
     return (
@@ -107,7 +104,7 @@ const Tab = TabNavigator(
       },  	  
     },
     {  
-      initialRouteName:'hanQi',
+      initialRouteName:'zhuZi',
       tabBarComponent:TabBarBottom,  
       tabBarPosition:'bottom',  
       swipeEnabled:false,  
@@ -124,24 +121,14 @@ const Tab = TabNavigator(
     },
   ); 
 const Apps = StackNavigator({
-  splashView:{
-    screen:splashView,
-    navigationOptions: {
-      header:null
-   },
-  },
-   guide:{
+  tab:{screen:Tab},
+  guide:{
 	  screen:GuidePageComponent,
 	  navigationOptions: {
          header:null
       },
 	},
-  tab:{screen:Tab,
-	
-  },
   baiChild:{screen:BaiChildComponent},
   jiaChild:{screen:JiaChildComponent},
   ziChild:{screen:ZiChildComponent},
-},{
-  initialRouteName:'splashView',
 });
