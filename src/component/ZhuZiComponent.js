@@ -25,7 +25,7 @@ export default class ZhuZiComponent extends Component{
 			dataSource:component,
 		}
 	}
-	componentWillMount() {
+	/*componentWillMount() {
 		if (Platform.OS === 'android') {
 			BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
 		}
@@ -48,7 +48,7 @@ export default class ZhuZiComponent extends Component{
 				ToastAndroid.show('再按一次退出应用', ToastAndroid.SHORT);
 				return true;
 			  }
-	};
+	};*/
 	
 
 	render(){
@@ -68,7 +68,7 @@ export default class ZhuZiComponent extends Component{
 			<TouchableHighlight
 			underlayColor={'#7B68EE'}
 			style={styles.listViewStyle}
-			onPress={()=>navigate('appState')}>
+			onPress={()=>navigate('Flat')}>
 			<View style={{flexDirection:'row', alignItems:'center', justifyContent: 'center' }}>
 			<Text style={styles.textStyle}>{rowData}</Text>
 			<Icon name="chevron-right" size={scaleSize(56)} color='#FFFFFF'/>

@@ -2,7 +2,7 @@ package com.zzbj;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;
-import org.devio.rn.splashscreen.SplashScreen;
+import com.reactnativecomponent.splashscreen.RCTSplashScreen;    //import RCTSplashScreen
 
 public class MainActivity extends ReactActivity {
 
@@ -17,7 +17,8 @@ public class MainActivity extends ReactActivity {
 	
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
-        SplashScreen.show(this);
+        RCTSplashScreen.openSplashScreen(this);   //open splashscreen
+        //RCTSplashScreen.openSplashScreen(this, true, ImageView.ScaleType.FIT_XY);   //open splashscreen fullscreen
         super.onCreate(savedInstanceState);
     }
      // https://github.com/react-navigation/react-navigation/issues/1372#issuecomment-299432731

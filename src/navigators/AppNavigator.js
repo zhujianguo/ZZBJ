@@ -7,7 +7,6 @@ import LoginScreen from '../reduxcomponent/LoginScreen';
 import MainScreen from '../reduxcomponent/MainScreen';
 import ProfileScreen from '../reduxcomponent/ProfileScreen';
 import { addListener } from '../utils/redux';
-import SplashScreen from 'react-native-splash-screen';
 
 export const AppNavigator = StackNavigator({
   Login: { screen: LoginScreen },
@@ -22,7 +21,7 @@ class AppWithNavigationState extends React.Component {
   };
 
   componentDidMount(){
-    SplashScreen.hide();
+   // SplashScreen.hide();
   } 
   
   render() {

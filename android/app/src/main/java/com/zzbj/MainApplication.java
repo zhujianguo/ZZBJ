@@ -3,7 +3,7 @@ package com.zzbj;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import org.devio.rn.splashscreen.SplashScreenReactPackage;
+import com.reactnativecomponent.splashscreen.RCTSplashScreenPackage;
 import com.zmxv.RNSound.RNSoundPackage;
 import com.rnfs.RNFSPackage;
 import com.facebook.react.ReactNativeHost;
@@ -27,7 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SplashScreenReactPackage(),
+            new RCTSplashScreenPackage(),
             new RNSoundPackage(),
             new RNFSPackage(),
 			new VectorIconsPackage()

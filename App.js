@@ -12,7 +12,7 @@ import {
   View,
   AppState
 } from 'react-native';
-import {StackNavigator,TabNavigator,TabBarBottom} from 'react-navigation';
+import {StackNavigator,TabNavigator,TabBarBottom,SwitchNavigator} from 'react-navigation';
 
 import ZhuZiComponent from './src/component/ZhuZiComponent';
 import BaiJiaComponent from './src/component/BaiJiaComponent';
@@ -23,8 +23,10 @@ import BaiChildComponent from './src/component/BaiChildComponent';
 import JiaChildComponent from './src/component/JiaChildComponent';
 import ZiChildComponent from './src/component/ZiChildComponent';
 import {setSpText,scaleSize} from './src/utils/ScreenUtil';
-import SplashScreen from 'react-native-splash-screen';
+import AuthLoadingScreen from './src/SwitchNavigator/AuthLoadingScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import SplashScreen from 'react-native-smart-splash-screen';
+import FlatListComponent from './src/component/zhuZiComponent/FlatListComponent';
 
 export default class App extends Component {
 	
@@ -46,17 +48,23 @@ export default class App extends Component {
    handleAppStateChange(appState) {
       //alert('当前状态为:'+appState);
    }
+
    componentDidMount(){
-    SplashScreen.hide();
-	}
+     //SplashScreen.hide();
+     SplashScreen.close({
+      animationType: SplashScreen.animationType.scale,
+      duration: 850,
+      delay: 500,
+   })
+   } 
+  
    
   render() {
     return (
-      <Apps/>
+      <SwitchNavigators/>
     );
   }
 }
-
 const Tab = TabNavigator(  
   {  
     zhuZi:{  
@@ -120,8 +128,12 @@ const Tab = TabNavigator(
       }     
     },
   ); 
+
 const Apps = StackNavigator({
-  tab:{screen:Tab},
+  tab:{screen:Tab,
+    navigationOptions: {
+      header:null
+   },},
   guide:{
 	  screen:GuidePageComponent,
 	  navigationOptions: {
@@ -131,4 +143,26 @@ const Apps = StackNavigator({
   baiChild:{screen:BaiChildComponent},
   jiaChild:{screen:JiaChildComponent},
   ziChild:{screen:ZiChildComponent},
+  Flat:{screen:FlatListComponent},
+  
 });
+const AppStack = StackNavigator({ Home: {screen:GuidePageComponent}, Other:{screen: QinShangComponent} });
+const AuthStack = StackNavigator({ ZhuZi: {screen:ZhuZiComponent,navigationOptions:({navigation}) => ({ 
+  header:null,
+  tabBarLabel:'诸子',  
+  tabBarIcon: ({ tintColor, focused }) => (  
+    <Icon name="yin-yang" size={scaleSize(56)} color={focused?'#FFFFFF':'#000000'} />  
+)  
+}),  }});
+
+const SwitchNavigators= SwitchNavigator(
+ {
+   AuthLoading: AuthLoadingScreen,
+   App: Apps,
+   Auth: AuthStack,
+ },
+ {
+   initialRouteName: 'AuthLoading',
+ }
+);
+
