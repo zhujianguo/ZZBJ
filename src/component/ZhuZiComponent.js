@@ -52,7 +52,7 @@ export default class ZhuZiComponent extends Component{
 	
 
 	render(){
-		const { navigate } = this.props.navigation;
+		
 		return(
 			<View style={styles.container}>
 				<StatusBar
@@ -68,7 +68,10 @@ export default class ZhuZiComponent extends Component{
 			<TouchableHighlight
 			underlayColor={'#7B68EE'}
 			style={styles.listViewStyle}
-			onPress={()=>navigate('Flat')}>
+			onPress={()=>{
+				this._select(rowData)
+			}
+			}>
 			<View style={{flexDirection:'row', alignItems:'center', justifyContent: 'center' }}>
 			<Text style={styles.textStyle}>{rowData}</Text>
 			<Icon name="chevron-right" size={scaleSize(56)} color='#FFFFFF'/>
@@ -76,6 +79,12 @@ export default class ZhuZiComponent extends Component{
 			</TouchableHighlight>}/>
 			</View>
 		);
+	}
+	
+	 _select(rowData){
+		 const { navigate } = this.props.navigation;
+		if(`${rowData}`=='FlatList'){
+				navigate('Flat')}
 	}
 }
 

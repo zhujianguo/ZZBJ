@@ -3,7 +3,8 @@ import {
     View,
     Text,
     TouchableOpacity,
-    StyleSheet
+    StyleSheet,
+	Alert
 } from 'react-native';
 import propTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
@@ -18,18 +19,24 @@ import { withNavigation } from 'react-navigation';
         let {text,onPress}=this.props;
        return(
            <TouchableOpacity
-           onPress={() => {onPress}}
+		   style={styles.cell}
+           onPress={()=>this.props.onPress()}
            >
        <View>
-        <Text>{text}</Text>
+        <Text style={styles.txt}>{text}</Text>
        </View>
        </TouchableOpacity>) 
+    }
+	
+	_alert(){
+		alert(`${this.props.text}`)
+       console.log('是我是我就是我')
     }
 }
 
 ButtonUI.propTypes={
     text:propTypes.string.isRequired,
-    onPress:propTypes.func.isRequired,
+    onPress:propTypes.func,
 }
 
 ButtonUI.defaultProps={      
@@ -43,6 +50,21 @@ const styles = StyleSheet.create({
             alignItems: 'center',
             overflow: 'hidden'
         },
+		cell:{
+        height:100,
+        backgroundColor:'purple',
+        alignItems:'center',
+        justifyContent:'center',
+        borderBottomColor:'#ececec',
+        borderBottomWidth:1
+
+    },
+	txt: {
+        textAlign: 'center',
+        textAlignVertical: 'center',
+        color: 'white',
+        fontSize: 30,
+    }
     });
 
 export default withNavigation(ButtonUI);

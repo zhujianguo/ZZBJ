@@ -5,11 +5,11 @@ import {
     FlatList,
     StyleSheet,
     Dimensions,
-    Button
+    Button,
+	Alert
 } from 'react-native';
 import ButtonUI from '../../ui/ButtonUI';
-import { Alert } from './C:/Users/OG03/AppData/Local/Microsoft/TypeScript/2.6/node_modules/@types/react-native';
-
+import Buttons from '../../ui/Buttons';
 
 const {width,height}=Dimensions.get('window')
 export default class FlatListComponent extends Component{
@@ -37,9 +37,10 @@ export default class FlatListComponent extends Component{
     }
 
     componentDidMount(){
-        
+         console.log('componentDidMount')
     }
     render() {
+		console.log('render')
         var data = [];
         for (var i = 0; i < 100; i++) {
             data.push({key: i, title: i + ''});
@@ -77,19 +78,28 @@ export default class FlatListComponent extends Component{
 
 
     _renderItem = (item) => {
+		console.log('_renderItem')
         var txt = '第' + item.index + '个' + ' title=' + item.item.title;
         var bgColor = item.index % 2 == 0 ? 'red' : 'blue';
-        return (<ButtonUI
-                   onPress={()=>{
-                       this._alert();
-                   }}
-                    text={txt}/>)
+        if(item.index<=20){return (
+            <ButtonUI text={txt} onPress={()=>this._alert(txt)}/>)}else if(item.index==21){
+                return(<View style={styles.cellcenter}><Text style={styles.txt}>我就是我，不一样的我</Text></View>)
+            }else{
+                return (
+                    <Buttons text={txt} onPressHandler={this._onPress}/>)
+                //return(<View style={styles.cellbottom}><Text style={styles.txt}>{`另一个我${txt}`}</Text></View>)
+            }
     }
 
-    _alert(){
-       alert('我出来了') 
+    _alert(txt){
+		alert(txt)   
+       console.log('是我是我就是我')
     }
-    
+    _onPress=()=>{
+       // alert('我被点了')
+       console.log(this)
+       this.props.navigation.goBack();//this直接使用必须在箭头函数中才可以
+    }
     _header = () => {
         return <Text style={[styles.txt,{backgroundColor:'black'}]}>这是头部</Text>;
     }
@@ -118,6 +128,24 @@ const styles=StyleSheet.create({
     cell:{
         height:100,
         backgroundColor:'purple',
+        alignItems:'center',
+        justifyContent:'center',
+        borderBottomColor:'#ececec',
+        borderBottomWidth:1
+
+    },
+    cellcenter:{
+        height:100,
+        backgroundColor:'#FF00FF',
+        alignItems:'center',
+        justifyContent:'center',
+        borderBottomColor:'#ececec',
+        borderBottomWidth:1
+
+    },
+    cellbottom:{
+        height:100,
+        backgroundColor:'#0FF0F0',
         alignItems:'center',
         justifyContent:'center',
         borderBottomColor:'#ececec',
