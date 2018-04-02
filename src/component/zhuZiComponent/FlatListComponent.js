@@ -86,18 +86,21 @@ export default class FlatListComponent extends Component{
                 return(<View style={styles.cellcenter}><Text style={styles.txt}>我就是我，不一样的我</Text></View>)
             }else{
                 return (
-                    <Buttons text={txt} onPressHandler={this._onPress}/>)
+                    <Buttons text={txt} onPressHandler={()=>this._onPress}/>)
                 //return(<View style={styles.cellbottom}><Text style={styles.txt}>{`另一个我${txt}`}</Text></View>)
             }
     }
 
     _alert(txt){
 		alert(txt)   
-       console.log('是我是我就是我')
+      // console.log('是我是我就是我')
+      // console.log(this)
+       this.props.navigation.goBack();
     }
     _onPress=()=>{
-       // alert('我被点了')
-       console.log(this)
+       // console.log('不是我不是我')
+        alert('我被点了')
+      // console.log(this)
        this.props.navigation.goBack();//this直接使用必须在箭头函数中才可以
     }
     _header = () => {

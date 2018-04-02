@@ -31,6 +31,7 @@ import { withNavigation } from 'react-navigation';
 	_alert(){
 		alert(`${this.props.text}`)
        console.log('是我是我就是我')
+       this.props.navigation.goBack();
     }
 }
 

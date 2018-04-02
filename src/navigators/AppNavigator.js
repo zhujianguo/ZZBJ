@@ -7,6 +7,7 @@ import LoginScreen from '../reduxcomponent/LoginScreen';
 import MainScreen from '../reduxcomponent/MainScreen';
 import ProfileScreen from '../reduxcomponent/ProfileScreen';
 import { addListener } from '../utils/redux';
+import SplashScreen from 'react-native-smart-splash-screen';
 
 export const AppNavigator = StackNavigator({
   Login: { screen: LoginScreen },
@@ -22,6 +23,11 @@ class AppWithNavigationState extends React.Component {
 
   componentDidMount(){
    // SplashScreen.hide();
+   SplashScreen.close({
+    animationType: SplashScreen.animationType.scale,
+    duration: 850,
+    delay: 500,
+ })
   } 
   
   render() {

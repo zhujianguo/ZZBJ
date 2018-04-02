@@ -3,7 +3,7 @@ import { Image, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import propTypes from 'prop-types';
 //因为onPressHandler是函数，所以后面要添加括号
 const Buttons=({text, onPressHandler})=>(
-    <TouchableOpacity onPress={()=>onPressHandler()}>
+    <TouchableOpacity onPress={onPressHandler()}>
     <Text>{text}</Text>
   </TouchableOpacity>
 )

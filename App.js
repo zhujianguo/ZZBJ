@@ -21,12 +21,14 @@ import HanQiComponent from './src/component/HanQiComponent';
 import GuidePageComponent from './src/component/GuidePageComponent';
 import BaiChildComponent from './src/component/BaiChildComponent';
 import JiaChildComponent from './src/component/JiaChildComponent';
+import JiaComponent from './src/component/JiaComponent';
 import ZiChildComponent from './src/component/ZiChildComponent';
 import {setSpText,scaleSize} from './src/utils/ScreenUtil';
 import AuthLoadingScreen from './src/SwitchNavigator/AuthLoadingScreen';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import SplashScreen from 'react-native-smart-splash-screen';
 import FlatListComponent from './src/component/zhuZiComponent/FlatListComponent';
+import ReactNavigationComponent from './src/component/zhuZiComponent/ReactNavigationComponent';
 
 export default class App extends Component {
 	
@@ -115,9 +117,9 @@ const Tab = TabNavigator(
       initialRouteName:'zhuZi',
       tabBarComponent:TabBarBottom,  
       tabBarPosition:'bottom',  
-      swipeEnabled:false,  
+      swipeEnabled:true,  
       animationEnabled:false,  
-      lazy:true,  
+      lazy:false,  
       tabBarOptions:{  
         activeTintColor:'#FFFFFF',  
         inactiveTintColor:'#000000', 
@@ -144,6 +146,8 @@ const Apps = StackNavigator({
   jiaChild:{screen:JiaChildComponent},
   ziChild:{screen:ZiChildComponent},
   Flat:{screen:FlatListComponent},
+  jia:{screen:JiaComponent},
+  reactNavigation:{screen:ReactNavigationComponent}
   
 });
 const AppStack = StackNavigator({ Home: {screen:GuidePageComponent}, Other:{screen: QinShangComponent} });
