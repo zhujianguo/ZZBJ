@@ -30,6 +30,7 @@ import FlatListComponent from './src/component/zhuZiComponent/FlatListComponent'
 
 export default class App extends Component {
 	
+	//添加了一个分支
 	componentWillMount() {
       //监听状态改变事件
      
